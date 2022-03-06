@@ -1,5 +1,6 @@
-# react-flight-tracker
-An open-source project written with React and TypeScript.
+# Live Flight Tracker
+## [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
+Written with `React` and `TypeScript`.
 
 The goal of this project is to read the data from [OpenSky Network](https://opensky-network.org/) and visualize it on a map.
 
@@ -40,4 +41,10 @@ REACT_APP_OSKY_PASSWORD=<YOUR_OPENSKYNETWORK_PASSWORD>
 Start the project:
 ```
 npm start
+```
+
+Build the project locally:
+```
+npm run build
+serve -s build
 ```
