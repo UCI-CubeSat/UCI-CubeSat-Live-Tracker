@@ -60,7 +60,7 @@ export class GeospatialService extends Service implements IGeospatialService {
   public offPathPredictionUpdated = (registerKey: string) => {
 
     // Delete callback
-    var existingSubscriber = Object.entries(this.pathPredictionUpdatedSubscriberDictionary).find(([key, value]) => key === registerKey);
+    let existingSubscriber = Object.entries(this.pathPredictionUpdatedSubscriberDictionary).find(([key, value]) => key === registerKey);
     if (existingSubscriber) {
 
       delete this.pathPredictionUpdatedSubscriberDictionary[registerKey];
@@ -93,27 +93,27 @@ export class GeospatialService extends Service implements IGeospatialService {
 
     const features: Array<Feature<Point, GeoJsonProperties>> = [];
 
-    for (var stateVector of stateVectors.states) {
+    for (let stateVector of stateVectors.states) {
 
       // Setup last position time in ms
-      var lastPositionTime = this.pathPredictionCounter
+      let lastPositionTime = this.pathPredictionCounter;
 
       // Setup altitude in m
-      var altitude = stateVector.geo_altitude;
+      let altitude = stateVector.geo_altitude;
       if ((altitude === null) || (altitude < 0))
         altitude = stateVector.baro_altitude;
       if ((altitude === null) || (altitude < 0))
         altitude = 0;
 
       // Setup vertical rate
-      var verticalRate = stateVector.vertical_rate ? stateVector.vertical_rate : 0.0;
+      let verticalRate = stateVector.vertical_rate ? stateVector.vertical_rate : 0.0;
       if (verticalRate < 0)
         verticalRate *= -1;
 
       const origin: Array<number> = [stateVector.longitude ? stateVector.longitude : 0, stateVector.latitude ? stateVector.latitude : 0]
       const velocity = stateVector.velocity ? stateVector.velocity : 0;
 
-      var distance = (velocity * lastPositionTime) / 1000;
+      let distance = (velocity * lastPositionTime) / 1000;
 
       // Try to adjust the distance to the vertical rate
       if (verticalRate !== 0)
@@ -136,7 +136,7 @@ export class GeospatialService extends Service implements IGeospatialService {
       );
 
       // Adding the ICAO24 prop to the feature so that a corresponding assignment is possible later
-      var properties: GeoJsonProperties = {
+      let properties: GeoJsonProperties = {
         ['icao24']: stateVector.icao24
       };
       feature.properties = properties;

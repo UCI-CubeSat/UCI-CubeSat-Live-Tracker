@@ -88,12 +88,12 @@ const FlightMap: React.FC<Props> = (props) => {
 
   const getMapGeoBounds = () => {
 
-    var mapGeoBounds: IMapGeoBounds = {
+    let mapGeoBounds: IMapGeoBounds = {
       northernLatitude: 0.0,
       easternLongitude: 0.0,
       southernLatitude: 0.0,
       westernLongitude: 0.0
-    }
+    };
 
     if (mapRef.current) {
 

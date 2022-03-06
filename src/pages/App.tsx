@@ -43,12 +43,12 @@ const App: React.FC = () => {
 
   const handleInjectCustomServices = () => {
 
-    var services: Array<IService> = [];
+    let services: Array<IService> = [];
 
-    var openSkyAPIService = new OpenSkyAPIService(process.env.REACT_APP_OSKY_USERNAME, process.env.REACT_APP_OSKY_PASSWORD);
+    let openSkyAPIService = new OpenSkyAPIService(process.env.REACT_APP_OSKY_USERNAME, process.env.REACT_APP_OSKY_PASSWORD);
     services.push(openSkyAPIService);
 
-    var geospatialService = new GeospatialService();
+    let geospatialService = new GeospatialService();
     services.push(geospatialService);
 
     return services;

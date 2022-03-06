@@ -92,7 +92,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
   public offStateVectorsUpdated = (registerKey: string) => {
 
     // Delete callback
-    var existingSubscriber = Object.entries(this.stateVectorsUpdatedSubscriberDictionary).find(([key, value]) => key === registerKey);
+    let existingSubscriber = Object.entries(this.stateVectorsUpdatedSubscriberDictionary).find(([key, value]) => key === registerKey);
     if (existingSubscriber) {
 
       delete this.stateVectorsUpdatedSubscriberDictionary[registerKey];
@@ -161,7 +161,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
   public offAircraftTrackUpdated = (registerKey: string) => {
 
     // Delete callback
-    var existingSubscriber = Object.entries(this.aircraftTrackUpdatedSubscriberDictionary).find(([key, value]) => key === registerKey);
+    let existingSubscriber = Object.entries(this.aircraftTrackUpdatedSubscriberDictionary).find(([key, value]) => key === registerKey);
     if (existingSubscriber) {
 
       delete this.aircraftTrackUpdatedSubscriberDictionary[registerKey];
@@ -256,7 +256,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
     if (!rawData.states)
       return data;
 
-    for (var rawStateVector of rawData.states) {
+    for (let rawStateVector of rawData.states) {
 
       const stateVector: IStateVector = {
         icao24: rawStateVector[0],
@@ -294,8 +294,8 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
 
     this.isFetchingStateVectors = true;
 
-    var stateBounds = `?lamin=${this.geoBounds.southernLatitude}&lomin=${this.geoBounds.westernLongitude}&lamax=${this.geoBounds.northernLatitude}&lomax=${this.geoBounds.easternLongitude}`;
-    var targetURL = `${URL}/states/all${stateBounds}`;
+    let stateBounds = `?lamin=${this.geoBounds.southernLatitude}&lomin=${this.geoBounds.westernLongitude}&lamax=${this.geoBounds.northernLatitude}&lomax=${this.geoBounds.easternLongitude}`;
+    let targetURL = `${URL}/states/all${stateBounds}`;
 
     this.restService.get<IStateVectorRawData>(targetURL, {
       mode: 'cors',
@@ -305,7 +305,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
 
         if (response.payload) {
 
-          var mappedData = this.mapRawStateVectorData(response.payload);
+          let mappedData = this.mapRawStateVectorData(response.payload);
           Object.entries(this.stateVectorsUpdatedSubscriberDictionary).forEach(([key, value], index) => value(mappedData))
         }
 
@@ -330,7 +330,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
 
     this.isFetchingAircraftStateVector = true;
 
-    var targetURL = `${URL}/states/all?&icao24=${this.trackedAircraft.icao24}`;
+    let targetURL = `${URL}/states/all?&icao24=${this.trackedAircraft.icao24}`;
 
     this.restService.get<IStateVectorRawData>(targetURL, {
       mode: 'cors',
@@ -340,7 +340,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
 
         if (response.payload) {
 
-          var mappedData = this.mapRawStateVectorData(response.payload);
+          let mappedData = this.mapRawStateVectorData(response.payload);
 
           if (mappedData.states.length > 0) {
 
@@ -372,7 +372,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
 
     this.isFetchingAircraftRoute = true;
 
-    var targetURL = `${URL}/routes?callsign=${this.trackedAircraft.callsign}`;
+    let targetURL = `${URL}/routes?callsign=${this.trackedAircraft.callsign}`;
 
     this.restService.get<any>(targetURL, {
       mode: 'no-cors',
@@ -406,7 +406,7 @@ export class OpenSkyAPIService extends Service implements IOpenSkyAPIService {
 
     this.isFetchingAircraftData = true;
 
-    var targetURL = `${URL}/metadata/aircraft/icao/${this.trackedAircraft.icao24}`;
+    let targetURL = `${URL}/metadata/aircraft/icao/${this.trackedAircraft.icao24}`;
 
     this.restService.get<any>(targetURL, {
       mode: 'no-cors',

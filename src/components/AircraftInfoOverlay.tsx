@@ -75,7 +75,7 @@ const AircraftInfoOverlay: React.FC<Props> = (props) => {
     const stateVector = props.selectedAircraft.stateVector;
 
     // Get altitude
-    var altitude = stateVector.geo_altitude;
+    let altitude = stateVector.geo_altitude;
     if ((altitude === null) || (altitude < 0))
       altitude = stateVector.baro_altitude;
     if ((altitude === null) || (altitude < 0))
@@ -186,19 +186,19 @@ const AircraftInfoOverlay: React.FC<Props> = (props) => {
 
     const stateVector = props.selectedAircraft.stateVector;
 
-    var options: Intl.DateTimeFormatOptions = {
+    let options: Intl.DateTimeFormatOptions = {
       year: 'numeric', month: 'numeric', day: 'numeric',
       hour: 'numeric', minute: 'numeric', second: 'numeric'
     };
 
-    var lastPositionTime = '?';
+    let lastPositionTime = '?';
     if (stateVector.time_position !== null) {
 
       var date = new Date(stateVector.time_position * 1000);
       lastPositionTime = new Intl.DateTimeFormat('de-CH', options).format(date)
     }
 
-    var lastContactTime = '?';
+    let lastContactTime = '?';
     if (stateVector.last_contact !== null) {
 
       var lastContactDate = new Date(stateVector.last_contact * 1000);
@@ -208,7 +208,7 @@ const AircraftInfoOverlay: React.FC<Props> = (props) => {
     // Get altitude
     const barometricAltitude = stateVector.baro_altitude ? stateVector.baro_altitude : 0;
     const geometricAltitude = stateVector.geo_altitude ? stateVector.geo_altitude : 0;
-    var altitude = stateVector.geo_altitude;
+    let altitude = stateVector.geo_altitude;
     if ((altitude === null) || (altitude < 0))
       altitude = stateVector.baro_altitude;
     if ((altitude === null) || (altitude < 0))
@@ -223,7 +223,7 @@ const AircraftInfoOverlay: React.FC<Props> = (props) => {
     // Get true track
     const trueTrack = stateVector.true_track ? stateVector.true_track : 0.0;
 
-    var textContainerStyle: SxProps<Theme> = {
+    let textContainerStyle: SxProps<Theme> = {
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
@@ -231,7 +231,7 @@ const AircraftInfoOverlay: React.FC<Props> = (props) => {
       alignContent: 'flex-start'
     };
 
-    var spaceStyle: SxProps<Theme> = {
+      let spaceStyle: SxProps<Theme> = {
       height: 8,
       minHeight: 8
     };

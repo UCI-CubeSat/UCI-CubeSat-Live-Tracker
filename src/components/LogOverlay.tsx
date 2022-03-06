@@ -17,9 +17,9 @@ const LogOverlay: React.FC<Props> = (props) => {
 
         {LogProvider.archive.map((log, index) => {
 
-          var LogIcon = getLogIcon(log);
+            let LogIcon = getLogIcon(log);
 
-          return (
+            return (
 
             <React.Fragment
               key={index}>

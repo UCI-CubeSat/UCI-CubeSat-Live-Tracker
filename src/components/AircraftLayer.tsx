@@ -1,13 +1,13 @@
-import React, { useState, useContext, useRef, useEffect } from 'react';
-import { Source, Layer } from 'react-map-gl';
-import { FeatureCollection, Geometry, Feature, GeoJsonProperties, Point, Position } from 'geojson';
-import { SymbolLayout, SymbolPaint, Expression, StyleFunction } from 'mapbox-gl';
-import { SystemContext } from '@daniel.neuweiler/react-lib-module';
-import { useTheme } from '@mui/material/styles';
+import React, {useContext, useEffect, useRef, useState} from 'react';
+import {Layer, Source} from 'react-map-gl';
+import {Feature, FeatureCollection, GeoJsonProperties, Point, Position} from 'geojson';
+import {Expression, StyleFunction, SymbolLayout, SymbolPaint} from 'mapbox-gl';
+import {SystemContext} from '@daniel.neuweiler/react-lib-module';
+import {useTheme} from '@mui/material/styles';
 
-import { IGeospatialService } from './../services';
-import { IStateVectorData, IAircraftTrack } from '../opensky';
-import { getFormattedValue, getIconName, getRotation, getColor } from '../helpers';
+import {IGeospatialService} from './../services';
+import {IAircraftTrack, IStateVectorData} from '../opensky';
+import {getColor, getFormattedValue, getIconName, getRotation} from '../helpers';
 
 interface ILocalProps {
   stateVectors: IStateVectorData;
@@ -44,8 +44,7 @@ const AircraftLayer: React.FC<Props> = (props) => {
     if (geospatialService) {
 
       // Get a register key for the subscription and save it as reference
-      const registerKey = geospatialService.onPathPredictionUpdated(contextName, handlePathPredictionUpdated);
-      pathPredictionSubscriptionRef.current = registerKey;
+      pathPredictionSubscriptionRef.current = geospatialService.onPathPredictionUpdated(contextName, handlePathPredictionUpdated);
     }
 
     // Unmount
@@ -98,12 +97,12 @@ const AircraftLayer: React.FC<Props> = (props) => {
 
     return new Promise<FeatureCollection>((res, rej) => {
 
-      var featureCollection: FeatureCollection = {
+      let featureCollection: FeatureCollection = {
         type: 'FeatureCollection',
         features: []
       };
 
-      for (var stateVector of props.stateVectors.states) {
+      for (let stateVector of props.stateVectors.states) {
 
         if (!stateVector.latitude) {
           continue;
@@ -117,7 +116,7 @@ const AircraftLayer: React.FC<Props> = (props) => {
         const index = props.stateVectors.states.indexOf(stateVector);
 
         // Check for selection
-        var isSelected = false;
+        let isSelected = false;
         if (props.selectedAircraft)
           isSelected = stateVector.icao24 === props.selectedAircraft.icao24;
 
@@ -125,7 +124,7 @@ const AircraftLayer: React.FC<Props> = (props) => {
         const callsign = stateVector.callsign ? stateVector.callsign : stateVector.icao24;
 
         // Get altitude
-        var altitude = stateVector.geo_altitude;
+        let altitude = stateVector.geo_altitude;
         if ((altitude === null) || (altitude < 0))
           altitude = stateVector.baro_altitude;
         if ((altitude === null) || (altitude < 0))
@@ -144,13 +143,13 @@ const AircraftLayer: React.FC<Props> = (props) => {
         const isOnGround = stateVector.on_ground;
 
         // Claculate color
-        var color = getColor(altitude);
+        let color = getColor(altitude);
         if (isOnGround)
           color = styleTheme.palette.text.secondary;
         if (isSelected)
           color = styleTheme.palette.primary.main;
 
-        var properties: GeoJsonProperties = {
+        let properties: GeoJsonProperties = {
           ['iconName']: getIconName(isOnGround, verticalRate, altitude, trueTrack),
           ['rotation']: getRotation(trueTrack, verticalRate, altitude),
           ['color']: color,
@@ -162,7 +161,7 @@ const AircraftLayer: React.FC<Props> = (props) => {
         }
 
         // Setup WGS84 coordinates
-        var position: Position = [stateVector.longitude, stateVector.latitude];
+        let position: Position = [stateVector.longitude, stateVector.latitude];
 
         if (pathPredictions.length > 0) {
 
@@ -171,17 +170,17 @@ const AircraftLayer: React.FC<Props> = (props) => {
             position = feature.geometry.coordinates;
         }
 
-        var point: Point = {
+        let point: Point = {
           type: 'Point',
           coordinates: position
         };
 
-        var feature: Feature<Point, GeoJsonProperties> = {
+        let feature: Feature<Point, GeoJsonProperties> = {
           type: 'Feature',
           id: `${index}.${stateVector.icao24}`,
           geometry: point,
           properties: properties
-        }
+        };
 
         featureCollection.features.push(feature);
       }
@@ -193,7 +192,7 @@ const AircraftLayer: React.FC<Props> = (props) => {
 
   const getText = (): string | Expression | StyleFunction => {
 
-    var text: string | Expression | StyleFunction = '';
+    let text: string | Expression | StyleFunction = '';
     const simpleText = ["get", "callsign"] as Expression
     const detailedText = ['format',
       ["get", "callsign"], { "font-scale": 1.0 },
@@ -213,11 +212,11 @@ const AircraftLayer: React.FC<Props> = (props) => {
 
   const getSymbolLayout = () => {
 
-    var showText = false;
+    let showText = false;
     if (props.zoom && props.zoom > 7)
       showText = true;
 
-    var isconSize = 1.0;
+    let isconSize = 1.0;
     if (props.zoom && props.zoom > 7)
       isconSize = 1.3;
     if (props.zoom && props.zoom > 9)
@@ -240,7 +239,7 @@ const AircraftLayer: React.FC<Props> = (props) => {
 
   const getSymbolPaint = () => {
 
-    var symbolPaint: SymbolPaint = {
+    let symbolPaint: SymbolPaint = {
       "icon-color": ["get", "color"],
       "text-color": ["get", "color"],
       "text-halo-width": 2,

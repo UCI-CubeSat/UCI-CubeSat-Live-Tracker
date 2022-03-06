@@ -65,13 +65,13 @@ export const getRotation = (trueTrack: number, verticalRate: number, altitude: n
 
 export const getColor = (altitude: number) => {
 
-  var percent = altitude / 13000 * 100;
+  let percent = altitude / 13000 * 100;
   if (percent > 100)
     percent = 100;
   if (percent < 0)
     percent = 0;
 
-  var r, g, b = 0;
+  let r, g, b = 0;
   if (percent < 50) {
     r = 255;
     g = Math.round(5.1 * percent);
@@ -81,7 +81,7 @@ export const getColor = (altitude: number) => {
     r = Math.round(510 - 5.10 * percent);
   }
 
-  var h = r * 0x10000 + g * 0x100 + b * 0x1;
+  let h = r * 0x10000 + g * 0x100 + b * 0x1;
 
   return '#' + ('000000' + h.toString(16)).slice(-6);
 };
