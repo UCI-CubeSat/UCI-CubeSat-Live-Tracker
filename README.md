@@ -1,7 +1,7 @@
 # Live Flight Tracker
 ## Deployed to: [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
 
-## TODOs: Adding an additional Satellite Layer inside `react-map-gl`
+## TODOs: Adding an additional `Satellite Layer` inside `react-map-gl`
 This will require a new API endpoint in the backend server
 
 `https://uci-cubesat-server.herokuapp.com/api/v1/satellite/{name}`
@@ -27,9 +27,9 @@ that return the current state of a satellite
 }
 ```
 
-and a new Service module in the Model similiar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
+and a new `Service` module in the model similiar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
 
-and a new `Satellite Layer` react component
+and a new `Satellite Layer` react component similar to [AircraftLayer.tsx](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/components/AircraftLayer.tsx)
 
 ## Description
 
