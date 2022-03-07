@@ -1,5 +1,38 @@
 # Live Flight Tracker
 ## Deployed to: [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
+
+## TODOs: Adding an additional Satellite Layer inside `react-map-gl`
+This will require a new API endpoint in the backend server
+
+`https://uci-cubesat-server.herokuapp.com/api/v1/satellite/{name}`
+
+that return the current state of a satellite
+
+```
+{
+  latLng: {
+    lat: -77.88052870998666,
+    lng: 36.95977766102887
+  },
+  latPath: [
+    -77.88052870998666,
+    ...,
+    -80.35845117082839
+  ],
+  lngPath: [
+    36.95977766102887,
+    ...,
+    24.027332976062507
+  ]
+}
+```
+
+and a new Service module in the Model similiar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
+
+and a new `Satellite Layer` react component
+
+## Description
+
 Written with `React` and `TypeScript`.
 
 The goal of this project is to read the data from [OpenSky Network](https://opensky-network.org/) and visualize it on a map.
