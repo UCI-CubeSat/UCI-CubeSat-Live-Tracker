@@ -1,6 +1,6 @@
 # Live Flight Tracker - Deployed to [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
 
-![[Website Status](https://uci-cubesat-live-tracker.herokuapp.com)](https://img.shields.io/website?down_color=lighgrey&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fuci-cubesat-live-tracker.herokuapp.com%2F)
+![![Website Status](https://uci-cubesat-live-tracker.herokuapp.com)](https://img.shields.io/website?down_color=lighgrey&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fuci-cubesat-live-tracker.herokuapp.com%2F)
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
