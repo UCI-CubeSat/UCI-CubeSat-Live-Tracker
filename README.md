@@ -2,34 +2,36 @@
 ## Deployed to: [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
 
 ## TODOs: Adding an additional `Satellite Layer` inside `react-map-gl`
-This will require a new API endpoint in the backend server
+This will require a new API endpoints in the backend server
 
-`https://uci-cubesat-server.herokuapp.com/api/v1/satellite/{name}`
+`https://uci-cubesat-server.herokuapp.com/api/v1/satellite_state/{name}`
 
 that return the current state of a satellite
 
 ```
 {
+  norad_cat_id: 41168
+  sat_id: "VTHG-6292-4004-9767-5017"
+  tle0: "ATHENOXAT 1",
+  tle1: "1 41168U 15077C   22065.83439863  .00010033  00000+0  44232-3 0  9993",
+  tle2: "2 41168  14.9916 129.3584 0009660 235.7803 270.3843 15.18062654344672",
   latLng: {
     lat: -77.88052870998666,
     lng: 36.95977766102887
-  },
-  latPath: [
-    -77.88052870998666,
-    ...,
-    -80.35845117082839
-  ],
-  lngPath: [
-    36.95977766102887,
-    ...,
-    24.027332976062507
-  ]
+  }
 }
 ```
 
-and a new `Service` module in the model similiar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
+optionally, two additional api endpoints that describe the `route` and `satellite` can also be helpful
 
-and a new `Satellite Layer` react component similar to [AircraftLayer.tsx](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/components/AircraftLayer.tsx)
+and a new `.src/services/cubesatAPIService.ts` `Service` module in the model similiar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
+
+and a new `./src/components/SatelliteLayer.tsx` `Satellite Layer` react component similar to [AircraftLayer.tsx](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/components/AircraftLayer.tsx)
+
+add a new `./src/cubesat` directory that has 
+1. `constants.ts` which holds varies constants including the api endpoints URL
+2. `index.ts` for exporting function/module
+3. `types.ts` that describes the expected JSON payload from the backend api response
 
 ## Description
 

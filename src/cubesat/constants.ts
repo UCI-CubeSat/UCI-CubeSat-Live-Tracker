@@ -1,6 +1,6 @@
 export const URL = 'http://uci-cubesat-server.herokuapp.com/';
 // export const routesEndpoint = 'api/routes?callsign={callsign}';
-// export const aircraftEndpoint = 'api/metadata/aircraft/icao/{icao24}';
+export const satelliteEndpoint = 'api/v1/satellite/{tle0}';
 // export const airportsEndpoint = 'api/airports/?icao={ICAO}';
 
 export class Constants {
