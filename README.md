@@ -55,5 +55,5 @@ Generating flight:
 
 [https://opensky-network.org/api/routes?callsign=DAL283](https://opensky-network.org/api/routes?callsign=DAL283)
 
-Deploy to Heroku:
+Deploying to Heroku:
 [https://dashboard.heroku.com/apps/uci-cubesat-live-tracker](https://dashboard.heroku.com/apps/uci-cubesat-live-tracker)
