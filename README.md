@@ -1,5 +1,8 @@
-# Live Flight Tracker
-## Deployed to: [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
+# Live Flight Tracker - Deployed to [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
+
+![Website Status](https://img.shields.io/website?down_color=lighgrey&down_message=offline&up_color=blue&up_message=online&url=https%3A%2F%2Fuci-cubesat-live-tracker.herokuapp.com%2F)
+
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## TODOs: Adding an additional `Satellite Layer` inside `react-map-gl`
 This will require a new API endpoints in the backend server
@@ -7,6 +10,11 @@ This will require a new API endpoints in the backend server
 `https://uci-cubesat-server.herokuapp.com/api/v1/satellite_state/{name}`
 
 that return the current state of a satellite
+
+Example of `curl 
+https://uci-cubesat-server.herokuapp.com/api/v1/satellite_state?name=amicalsat`
+
+Should return something like this:
 
 ```
 {
@@ -24,7 +32,7 @@ that return the current state of a satellite
 
 optionally, two additional api endpoints that describe the `route` and `satellite` can also be helpful
 
-and a new `.src/services/cubesatAPIService.ts` `Service` module in the model similiar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
+and a new `.src/services/cubesatAPIService.ts` `Service` module in the model similar to [openSkyAPIService.ts](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/services/openSkyAPIService.ts)
 
 and a new `./src/components/SatelliteLayer.tsx` `Satellite Layer` react component similar to [AircraftLayer.tsx](https://github.com/UCI-CubeSat/UCI-CubeSat-Live-Tracker/blob/main/src/components/AircraftLayer.tsx)
 
@@ -33,15 +41,23 @@ add a new `./src/cubesat` directory that has
 2. `index.ts` for exporting function/module
 3. `types.ts` that describes the expected JSON payload from the backend api response
 
+Satellite Flights are display and updated using a `subscription` model
+
+`./src/components/SatelliteLayer.tsx` subscribe to active flights within map bounds, 
+add them to a local register and listen for `status` change
+
+`./src/cubesat/types.ts` and `./src/services/cubesatAPIService.ts` perform
+the asynchronous fetch operation to get flight status response from the backend server
+
+`./src/services/geospatialService.ts` perform additional calculation to prediction upcoming path change
+
 ## Description
 
 Written with `React` and `TypeScript`.
 
-The goal of this project is to read the data from [OpenSky Network](https://opensky-network.org/) and visualize it on a map.
+The goal of this project is to read the data from [SatNogs Open Network](https://satnogs.org/) and [OpenSky Network](https://opensky-network.org/) and visualize it on a map.
 
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
-![](docs/react-flight-tracker_prview.gif)
+![Preview GIF](docs/react-flight-tracker_prview.gif)
 
 ## 📦 Packages:
 - [TypeScript](https://github.com/microsoft/TypeScript)
