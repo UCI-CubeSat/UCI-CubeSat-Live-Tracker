@@ -48,3 +48,9 @@ Build the project locally:
 npm run build
 serve -s build
 ```
+
+Generating flight:
+
+[https://opensky-network.org/api/states/all?&icao24=a535be](https://opensky-network.org/api/states/all?&icao24=a535be)
+
+[https://opensky-network.org/api/routes?callsign=DAL283](https://opensky-network.org/api/routes?callsign=DAL283)
