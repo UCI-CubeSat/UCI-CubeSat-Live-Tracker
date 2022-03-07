@@ -1,5 +1,5 @@
 # Live Flight Tracker
-## [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
+## Deployed to: [https://uci-cubesat-live-tracker.herokuapp.com/](https://uci-cubesat-live-tracker.herokuapp.com/)
 Written with `React` and `TypeScript`.
 
 The goal of this project is to read the data from [OpenSky Network](https://opensky-network.org/) and visualize it on a map.
@@ -49,8 +49,5 @@ npm run build
 serve -s build
 ```
 
-Generating flight:
-
-[https://opensky-network.org/api/states/all?&icao24=a535be](https://opensky-network.org/api/states/all?&icao24=a535be)
-
-[https://opensky-network.org/api/routes?callsign=DAL283](https://opensky-network.org/api/routes?callsign=DAL283)
+Deploy to Heroku:
+[https://dashboard.heroku.com/apps/uci-cubesat-live-tracker](https://dashboard.heroku.com/apps/uci-cubesat-live-tracker)
