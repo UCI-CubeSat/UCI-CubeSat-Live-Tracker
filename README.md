@@ -42,8 +42,6 @@ The goal of this project is to read the data from [OpenSky Network](https://open
 ![](docs/react-flight-tracker_prview.gif)
 
 ## 📦 Packages:
-- [ts-lib-module](https://github.com/xSNOWM4Nx/ts-lib-module)
-- [react-lib-module](https://github.com/xSNOWM4Nx/react-lib-module)
 - [TypeScript](https://github.com/microsoft/TypeScript)
 - [react-router](https://github.com/ReactTraining/react-router)
 - [MUI](https://github.com/mui-org)
